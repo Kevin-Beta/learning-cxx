@@ -15,7 +15,7 @@ class DynFibonacci {
 
 public:
     // TODO: 实现动态设置容量的构造器
-    DynFibonacci(int capacity): cache(new size_t[capacity]{0, 1}), cached(capacity) {}
+    DynFibonacci(int capacity): cache(new size_t[capacity]{0, 1}), cached(2) {}
 
     // TODO: 实现移动构造器
     DynFibonacci(DynFibonacci &&other) noexcept:cache(other.cache), cached(other.cached){
@@ -34,6 +34,7 @@ public:
                 cache[i] = other.cache[i];
             }
             other.cache = nullptr;
+            other.cached = 0;
         }
         return *this;
     }
