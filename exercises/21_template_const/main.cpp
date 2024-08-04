@@ -37,9 +37,9 @@ private:
     unsigned int data_index(unsigned int const indices[N]) const {
         unsigned int index = 0;
         unsigned int count = 1;
-        for (auto i = N-1; i >= 0u; i--) {
+        for (auto i = N-1; i < N; i--) {
             // std::cout << "i:" << i << "\tindices[i]:" << indices[i] << "\tshape[i]:" << shape[i] << std::endl;
-            // ASSERT(indices[i] < shape[i], "Invalid index");
+            ASSERT(indices[i] < shape[i], "Invalid index");
             // TODO: 计算 index
             index += count * indices[i];
             count *= shape[i];
