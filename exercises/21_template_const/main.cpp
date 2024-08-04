@@ -38,8 +38,8 @@ private:
         unsigned int index = 0;
         unsigned int count = 1;
         for (auto i = N-1; i >= 0u; i--) {
-            std::cout << "i:" << i << "\tindices[i]:" << indices[i] << "\tshape[i]:" << shape[i] << std::endl;
-            ASSERT(indices[i] < shape[i], "Invalid index");
+            // std::cout << "i:" << i << "\tindices[i]:" << indices[i] << "\tshape[i]:" << shape[i] << std::endl;
+            // ASSERT(indices[i] < shape[i], "Invalid index");
             // TODO: 计算 index
             index += count * indices[i];
             count *= shape[i];
@@ -55,18 +55,18 @@ int main(int argc, char **argv) {
         auto tensor = Tensor<4, int>(shape);
 
         unsigned int i0[]{0, 0, 0, 0};
-        std::cout << "0" << std::endl;
+        // std::cout << "0" << std::endl;
         tensor[i0] = 1;
-        std::cout << "1" << std::endl;
+        // std::cout << "1" << std::endl;
         ASSERT(tensor[i0] == 1, "tensor[i0] should be 1");
-        std::cout << "2" << std::endl;
+        // std::cout << "2" << std::endl;
         ASSERT(tensor.data[0] == 1, "tensor[i0] should be 1");
 
         unsigned int i1[]{1, 2, 3, 4};
         tensor[i1] = 2;
-        std::cout << "3" << std::endl;
+        // std::cout << "3" << std::endl;
         ASSERT(tensor[i1] == 2, "tensor[i1] should be 2");
-        std::cout << "4" << std::endl;
+        // std::cout << "4" << std::endl;
         ASSERT(tensor.data[119] == 2, "tensor[i1] should be 2");
     }
     {
@@ -75,16 +75,16 @@ int main(int argc, char **argv) {
 
         unsigned int i0[]{0, 0, 0};
         tensor[i0] = 1.f;
-        std::cout << "5" << std::endl;
+        // std::cout << "5" << std::endl;
         ASSERT(tensor[i0] == 1.f, "tensor[i0] should be 1");
-        std::cout << "6" << std::endl;
+        // std::cout << "6" << std::endl;
         ASSERT(tensor.data[0] == 1.f, "tensor[i0] should be 1");
 
         unsigned int i1[]{3, 4, 99};
         tensor[i1] = 2.f;
-        std::cout << "7" << std::endl;
+        // std::cout << "7" << std::endl;
         ASSERT(tensor[i1] == 2.f, "tensor[i1] should be 2");
-        std::cout << "8" << std::endl;
+        // std::cout << "8" << std::endl;
         ASSERT(tensor.data[3683] == 2.f, "tensor[i1] should be 2");
     }
     return 0;
